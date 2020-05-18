@@ -5,29 +5,30 @@
 let money = +prompt('Ваш бюджет на месяц?', '');
 let time = prompt('Введите дату в формате YYYY-MM-DD', '');
 
-let state = prompt('Введите обязательную статью расходов в это месяце?');
-console.log(state);
-
-let price = prompt('Во сколько обойдется?');
 
 let appData = {
     money: money,
     timeData: time,
     expenses: {
-        state: price
+
+     },
+    optionalExpenses: {
+
     },
-    optionalExpenses: {},
     income: [],
     savingis: false
 };
 
 for (let i = 0; i < 2; i++) {
-        if ( (typeof(state)) === 'string' && (typeof(state)) != null && (typeof(price)) != null
+    let state = prompt('Введите обязательную статью расходов в это месяце?');
+    let price = prompt('Во сколько обойдется?');
+
+    if ( (typeof(state)) === 'string' && (typeof(state)) != null && (typeof(price)) != null
          && state != '' && price != '' && state.length < 50 ) {
             console.log('done');
+            appData.expenses[state] = price;
         } else {
-            console.log('Error');
-            
+            i -= 1;
         }
 
 };
@@ -35,7 +36,7 @@ for (let i = 0; i < 2; i++) {
 
     appData.moneyPerDay = appData.money / 30;
 
-    alert("Твои пожитки на день " + appData.moneyPerDay);
+    alert("Твои пожитки на день " + parseInt(appData.moneyPerDay));
 
     if(appData.moneyPerDay < 100) {
         console.log('Вы бимж');
