@@ -127,7 +127,7 @@ percentValue.addEventListener('input', () => {
         monthSavingsValue.textContent = appData.monthIncome.toFixed(1);
         yearSavingsValue.textContent = appData.yearIncome.toFixed(1);
     }
-})
+});
 
 let appData = {
     budget: money,
